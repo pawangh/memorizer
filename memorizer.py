@@ -9,6 +9,13 @@ def delete():
     indexs = lb.curselection()
     lb.delete(indexs)
 
+def load():
+    file2 = tkinter.filedialog.askopenfile()
+    if file2 != None:
+        items = file2.readlines()
+        for item in items:
+            lb.insert(tkinter.END,item)
+
 def save():
     file1 = tkinter.filedialog.asksaveasfile()
     if file1 != None:
@@ -23,7 +30,7 @@ def add():
         lb.insert(tkinter.END,edd)
         e1.delete(0,tkinter.END)
 
-b1=tkinter.Button(screen,text="open")
+b1=tkinter.Button(screen,text="open",command=load)
 b2=tkinter.Button(screen,text="delete",command=delete)
 b3=tkinter.Button(screen,text="save",command=save)
 b4=tkinter.Button(screen,text="add",command=add)
